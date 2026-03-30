@@ -16,7 +16,7 @@
   </proxies>
 
   <config>
-    <documentation file="documentation.rtf" />
+    <documentation file="www/documentation.rtf" />
     <script file="driver.lua"></script>
     
     <actions>
