@@ -1,0 +1,156 @@
+<devicedata>
+  <copyright>Copyright 2026</copyright>
+  <manufacturer>Bryan Rowe</manufacturer>
+  <name>Reolink Doorbell Visitor Event</name>
+  <model>Reolink Doorbell Visitor Event</model>
+  <creator>Bryan</creator>
+  <created>03/30/2026 17:15</created>
+  <modified>03/30/2026 18:10</modified>
+  <version>4</version>
+  <control>lua_gen</control>
+  <driver>DriverWorks</driver>
+  
+  <combo>true</combo>
+  <proxies>
+    <proxy>generic_http</proxy>
+  </proxies>
+
+  <config>
+    <script file="driver.lua"></script>
+    
+    <actions>
+      <action>
+        <name>Reconnect Now</name>
+        <command>RECONNECT_NOW</command>
+      </action>
+      <action>
+        <name>Test Visitor Event</name>
+        <command>TEST_VISITOR_EVENT</command>
+      </action>
+      <action>
+        <name>Refresh Visitor State</name>
+        <command>REFRESH_VISITOR_STATE</command>
+      </action>
+    </actions>
+
+    <commands>
+      <command>
+        <name>RECONNECT_NOW</name>
+        <description>Reconnect to the doorbell</description>
+      </command>
+      <command>
+        <name>TEST_VISITOR_EVENT</name>
+        <description>Fire the visitor event for testing</description>
+      </command>
+      <command>
+        <name>REFRESH_VISITOR_STATE</name>
+        <description>Refresh current visitor state from Reolink</description>
+      </command>
+    </commands>
+
+    <properties>
+      <property>
+        <name>Debug Mode</name>
+        <type>LIST</type>
+        <items><item>Off</item><item>On</item></items>
+        <default>Off</default>
+      </property>
+      <property>
+        <name>Doorbell IP</name>
+        <type>STRING</type>
+        <default></default>
+      </property>
+      <property>
+        <name>API Port</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>65535</maximum>
+        <default>443</default>
+      </property>
+      <property>
+        <name>Use HTTPS</name>
+        <type>LIST</type>
+        <items><item>Yes</item><item>No</item></items>
+        <default>Yes</default>
+      </property>
+      <property>
+        <name>Baichuan Port</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>65535</maximum>
+        <default>9000</default>
+      </property>
+      <property>
+        <name>Username</name>
+        <type>STRING</type>
+        <default>admin</default>
+      </property>
+      <property>
+        <name>Password</name>
+        <type>STRING</type>
+        <default></default>
+        <password>true</password>
+      </property>
+      <property>
+        <name>Channel</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>0</minimum>
+        <maximum>15</maximum>
+        <default>0</default>
+      </property>
+      <property>
+        <name>Debounce Seconds</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>30</maximum>
+        <default>3</default>
+      </property>
+      <property>
+        <name>Push Settling Delay MS</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>50</minimum>
+        <maximum>5000</maximum>
+        <default>250</default>
+      </property>
+      <property>
+        <name>Poll Fallback Seconds</name>
+        <type>RANGED_INTEGER</type>
+        <minimum>1</minimum>
+        <maximum>60</maximum>
+        <default>5</default>
+      </property>
+      <property>
+        <name>Connection Status</name>
+        <type>STRING</type>
+        <default>Disconnected</default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Last Push Timestamp</name>
+        <type>STRING</type>
+        <default>Never</default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Last Visitor Event</name>
+        <type>STRING</type>
+        <default>Never</default>
+        <readonly>true</readonly>
+      </property>
+      <property>
+        <name>Last Refresh Result</name>
+        <type>STRING</type>
+        <default>Not started</default>
+        <readonly>true</readonly>
+      </property>
+    </properties>
+  </config>
+
+  <events>
+    <event>
+      <id>1</id>
+      <name>Visitor Pressed</name>
+      <description>When NAME Visitor Pressed</description>
+    </event>
+  </events>
+</devicedata>
